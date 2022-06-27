@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Header from '../../core/components/Header/Header';
+import PageLayout from '../../core/components/PageLayout/PageLayout';
 import { logoBG, logoShape, logoSize } from '../../core/types/headerTypes';
 import HomeStyled from './Home.styled';
 
@@ -31,12 +32,14 @@ const propsObj = {
             background: "transparent" as logoBG,
             size: "medium" as logoSize
         }
-    }
+    },
+    mainProps: {},
+    footerProps: {}
 }
 const Home: FunctionComponent = () => {
-    return <HomeStyled>
-        <Header {...propsObj.headerProps} />
-    </HomeStyled>;
+    return <PageLayout {...propsObj}>
+        <>dxvxcvxcv</>
+    </PageLayout>;
 }
 
 export default Home;

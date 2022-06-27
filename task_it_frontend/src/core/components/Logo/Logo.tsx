@@ -4,9 +4,7 @@ import logoSvg from "../../../assets/images/logo.svg";
 import { LogoDetails } from "../../types/headerTypes";
 
 const Logo: FunctionComponent<LogoDetails> = (props) => {
-    return <LogoStyled {...props} >
-        <img src={logoSvg} alt="app logo" />
-    </LogoStyled>;
+    return <LogoStyled src={logoSvg} alt="app logo" />
 };
 
 export default Logo;

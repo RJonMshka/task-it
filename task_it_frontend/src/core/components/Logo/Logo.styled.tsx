@@ -6,9 +6,6 @@ const sizes = {
     LG: "large"
 };
 
-export default styled.div`
-    width: 50px;
-    img {
-        width: 100%;
-    }
+export default styled.img`
+    width: 100%;
 `;
