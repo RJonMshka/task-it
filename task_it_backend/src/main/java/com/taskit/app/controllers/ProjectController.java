@@ -4,6 +4,8 @@ import com.taskit.app.entities.Project;
 import com.taskit.app.entities.User;
 import com.taskit.app.payloads.requests.CreateProjectRequest;
 import com.taskit.app.payloads.responses.MessageResponse;
+import com.taskit.app.payloads.responses.ProjectListResponse;
+import com.taskit.app.payloads.responses.ProjectResponse;
 import com.taskit.app.repositories.ProjectRepository;
 import com.taskit.app.repositories.UserRepository;
 import com.taskit.app.services.UserDetailsImpl;
@@ -11,13 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -79,6 +79,7 @@ public class ProjectController {
     }
 
     @GetMapping("/list_projects")
+    @Transactional
     public ResponseEntity<?> getAllProjects() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -94,10 +95,26 @@ public class ProjectController {
 
         Set<Project> projects = user.getProjects();
 
+        List<ProjectResponse> projectList = new ArrayList<>();
+        projects.forEach(project -> {
+            projectList.add(
+                    new ProjectResponse(
+                            project.getId(),
+                            project.getName(),
+                            project.getKeyword(),
+                            project.getDescription(),
+                            project.getColor(),
+                            project.getProjectMembers().size(),
+                            project.getProjectManagers().size(),
+                            project.getProjectManagers().stream().filter(manager -> manager.getId().equals(user.getId())).findFirst().isPresent()
+                    )
+            );
+        });
 
+        ProjectListResponse projectListResponse = new ProjectListResponse(projectList);
 
         return ResponseEntity.ok().body(
-                new MessageResponse("Nothing much")
+                projectListResponse
         );
 
     }

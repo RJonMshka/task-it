@@ -31,5 +31,8 @@ public class Task {
     private String description;
 
     @Column(name = "assignee")
-    private Long userId;
+    private Long assignee;
+
+    @Column(name = "status")
+    private Integer status;
 }

@@ -1,8 +1,12 @@
 package com.taskit.app.entities;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -18,7 +22,7 @@ import javax.validation.constraints.Size;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "first_name")
     @Size(max = 30)
     private String firstName;
@@ -40,15 +44,38 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude @ToString.Exclude
+    @JsonIgnore
     @JoinTable(name = "project_members",
             joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"))
     private Set<Project> projects = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude @ToString.Exclude
+    @JsonIgnore
+    @JoinTable(name = "project_managers",
+            joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "manager_id", referencedColumnName = "id"))
+    private Set<Project> ownedProjects = new HashSet<>();
+
+    @OneToMany(mappedBy = "assignee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Task> tasks = new HashSet<>();
+
+//    @Override
+//    public String toString() {
+//        return "User(" +
+//                "Name: " + this.firstName + " " + this.lastName + "\n" +
+//                "username: " + this.username + "\n" +
+//                "email: " + this.email + "\n" +
+//                ")";
+    //}
 
 }

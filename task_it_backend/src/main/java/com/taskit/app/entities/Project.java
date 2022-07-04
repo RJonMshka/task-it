@@ -1,6 +1,8 @@
 package com.taskit.app.entities;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,6 +41,7 @@ public class Project {
     private String color;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @JoinTable(
             name = "project_members",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
@@ -47,6 +50,7 @@ public class Project {
     private Set<User> projectMembers =  new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @JoinTable(
             name = "project_managers",
             joinColumns = @JoinColumn(name = "manager_id", referencedColumnName = "id"),
@@ -54,4 +58,6 @@ public class Project {
     )
     private Set<User> projectManagers =  new HashSet<>();
 
+    @OneToMany(mappedBy = "projectId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Task> tasks = new HashSet<>();
 }

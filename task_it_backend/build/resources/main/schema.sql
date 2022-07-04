@@ -52,7 +52,8 @@ CREATE TABLE "tasks"(
     id bigserial PRIMARY KEY,
     title varchar(50) NOT NULL,
     project_id bigint REFERENCES projects,
-    priority int,
+    priority int NOT NULL,
+    status int NOT NULL,
     description varchar(1000),
     assignee bigint REFERENCES users
 );
