@@ -15,6 +15,7 @@ export default styled.header`
     padding: 8px;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,50,103,1) 30%, rgba(29,68,187,1) 76%, rgba(0,156,187,1) 100%);
     display: flex;
+    position: relative;
     
     @media ${devices.tablet} {
         height: ${headerHeight.tablet};
@@ -44,10 +45,28 @@ export const LogoContainer = styled.div`
         width: 80px;
         height: 80px;
     }
+
+    a {
+        display: inline-block;
+    }
 `;
 
 export const NavContainer = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    flex: 1;
 `;
 
 export const AccountLinksContainer = styled.div`
+    display: flex;
+    align-items: center;
+
+    a {
+        margin-left: 8px;
+        font-size: 20px;
+        padding: 8px 16px;
+        background: #520b5e;
+        border-radius: 8px;
+    }
 `;

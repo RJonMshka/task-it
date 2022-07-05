@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from "react";
 import LogoStyled from "./Logo.styled";
 import logoSvg from "../../../assets/images/logo.svg";
-import { LogoDetails } from "../../types/headerTypes";
+import { Link } from "react-router-dom";
 
-const Logo: FunctionComponent<LogoDetails> = (props) => {
-    return <LogoStyled src={logoSvg} alt="app logo" />
+const Logo: FunctionComponent = (props) => {
+    return <Link to={"/"}>
+        <LogoStyled src={logoSvg} alt="app logo" />
+    </Link>
 };
 
 export default Logo;

@@ -30,18 +30,11 @@ public class ProjectController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @GetMapping("/test")
-    public ResponseEntity<?> testProjects() {
-        return ResponseEntity.ok().body(projectRepository.findAll());
-    }
-
     @PostMapping("/create")
     public ResponseEntity<?> createProject(@Valid @RequestBody CreateProjectRequest createProjectRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         String currentUserName = userDetails.getUsername();
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         if(!userRepository.existsByUsername(currentUserName)) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: cannot create project for this user"));
@@ -84,8 +77,6 @@ public class ProjectController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         String currentUserName = userDetails.getUsername();
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         if(!userRepository.existsByUsername(currentUserName)) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: user requesting does not exists"));

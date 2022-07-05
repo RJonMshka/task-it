@@ -1,16 +1,17 @@
 import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { NavProps } from "../../types/headerTypes";
+import { StyledNav } from "./Navigation.styled";
 
 
 const Nav: FunctionComponent<NavProps> = ({ navLinks }) => {
-    return <nav>
+    return <StyledNav>
         {
             navLinks.map((navLink, idx) => {
-                return <Link to={navLink.link} key={idx}>{navLink.text}</Link>
+                return !navLink.needAuthentication && <Link to={navLink.link} key={idx}>{navLink.text}</Link>
             })
         }
-    </nav>
+    </StyledNav>
 };
 
 export default Nav;

@@ -6,10 +6,11 @@ import Navigation from "../Navigation/Navigation";
 import StyledHeader, { LogoContainer, NavContainer, AccountLinksContainer } from "./Header.styled";
 
 
-const Header: FunctionComponent<HeaderProps> = ({ navLinks, authRouteDetails, logoDetails }) => {
+
+const Header: FunctionComponent<HeaderProps> = ({ navLinks, authRouteDetails }) => {
     return <StyledHeader>
         <LogoContainer>
-            <Logo {...logoDetails} />
+            <Logo />
         </LogoContainer>
         
         <NavContainer>
@@ -17,7 +18,7 @@ const Header: FunctionComponent<HeaderProps> = ({ navLinks, authRouteDetails, lo
         </NavContainer>
         
         <AccountLinksContainer>
-            <AccountLinks/>
+            <AccountLinks {...authRouteDetails} />
         </AccountLinksContainer>
     </StyledHeader>
 };

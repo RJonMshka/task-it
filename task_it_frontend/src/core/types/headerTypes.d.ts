@@ -2,34 +2,23 @@ export type logoShape = "circle" | "square";
 export type logoBG = "dark" | "white" | "transparent";
 export type logoSize = "small" | "medium" | "large";
 
-export interface LogoDetails {
-    shape: logoShape,
-    background: logoBG,
-    size: logoSize
-}
 
-export type PageRoutes = {
-    link: string,
+export type NavLinkProps = {
     text: string,
-    ariaLabel?: string
+    link: string,
+    ariaText?: string,
+    needAuthentication: boolean
 }
 
 export interface NavProps {
-    navLinks: PageRoutes[]
+    navLinks: NavLinkProps[]
 }
 
-export type Authentication = {
-    isAuthenticated: boolean,
-    routes: PageRoutes[]
+export interface AuthRouteProps {
+    routes: NavLinkProps[]
 }
-
-export interface AuthProps {
-    authRouteDetails: Authentication
-}
-
 
 export interface HeaderProps {
-    navLinks: PageRoutes[],
-    authRouteDetails: Authentication,
-    logoDetails: LogoDetails
+    navLinks: NavLinkProps[],
+    authRouteDetails: AuthRouteProps
 }

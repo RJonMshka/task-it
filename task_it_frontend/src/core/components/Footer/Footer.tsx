@@ -1,9 +1,15 @@
 import React, { FunctionComponent } from "react";
-import { StyledFooter } from "./Footer.styled";
+import { Link } from "react-router-dom";
+import { NavProps } from "../../types/headerTypes";
+import { FooterLinksContainer, StyledFooter } from "./Footer.styled";
 
-const Footer: FunctionComponent = () => {
+const Footer: FunctionComponent<NavProps> = ({ navLinks }) => {
     return <StyledFooter>
-        <Footer />
+        <FooterLinksContainer>
+            {navLinks.map((navLink, idx) => {
+                return <Link to={navLink.link} key={idx}>{navLink.text}</Link>
+            })}
+        </FooterLinksContainer>
     </StyledFooter>;
 };
 

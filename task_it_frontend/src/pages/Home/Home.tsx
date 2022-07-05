@@ -2,43 +2,19 @@ import React, { FunctionComponent } from 'react';
 import Header from '../../core/components/Header/Header';
 import PageLayout from '../../core/components/PageLayout/PageLayout';
 import { logoBG, logoShape, logoSize } from '../../core/types/headerTypes';
-import HomeStyled from './Home.styled';
+import HomeStyled, { StyledDescription, StyledHeading, StyledHeroBanner, StyledHeroBannerContainer, StyledHeroContentContainer } from './Home.styled';
+import logoSvg from "../../assets/images/logo.svg";
 
-
-
-const propsObj = {
-    headerProps: {
-        navLinks: [
-            {
-                text: "Home",
-                link: "/"
-            },
-            {
-                text: "Dashboard",
-                link: "/dashboard"
-            }
-        ],
-        authRouteDetails: {
-            isAuthenticated: false,
-            routes: [
-                {
-                    link: "/login",
-                    text: "Login"
-                }
-            ]
-        },
-        logoDetails: {
-            shape: "square" as logoShape,
-            background: "transparent" as logoBG,
-            size: "medium" as logoSize
-        }
-    },
-    mainProps: {},
-    footerProps: {}
-}
 const Home: FunctionComponent = () => {
-    return <PageLayout {...propsObj}>
-        <>dxvxcvxcv</>
+    return <PageLayout>
+        <StyledHeroBannerContainer>
+            <StyledHeroBanner src={logoSvg} alt="Hero Banner" />
+            <StyledHeroContentContainer>
+                <StyledHeading>Welcome to Task It!</StyledHeading>
+                <StyledDescription>Here you can easily manage all your tasks and respective projects so easily.</StyledDescription>
+            </StyledHeroContentContainer>
+        </StyledHeroBannerContainer>
+        
     </PageLayout>;
 }
 
