@@ -61,12 +61,4 @@ export const NavContainer = styled.div`
 export const AccountLinksContainer = styled.div`
     display: flex;
     align-items: center;
-
-    a {
-        margin-left: 8px;
-        font-size: 20px;
-        padding: 8px 16px;
-        background: #520b5e;
-        border-radius: 8px;
-    }
 `;

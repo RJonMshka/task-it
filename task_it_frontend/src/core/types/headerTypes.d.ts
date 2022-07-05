@@ -22,3 +22,7 @@ export interface HeaderProps {
     navLinks: NavLinkProps[],
     authRouteDetails: AuthRouteProps
 }
+
+export interface HeaderAccountProps {
+    name: String
+}

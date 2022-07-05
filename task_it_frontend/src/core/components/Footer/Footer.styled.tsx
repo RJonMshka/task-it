@@ -7,11 +7,12 @@ export const StyledFooter = styled.footer`
     background: black;
     color: white;
     padding: 16px;
-    display: flex;
+`;
 
+export const FooterLinksContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
     a {
-        color: white;
-        text-decoration: none;
         display: inline-block;
         padding-right: 24px;
 
@@ -21,8 +22,11 @@ export const StyledFooter = styled.footer`
     }
 `;
 
-export const FooterLinksContainer = styled.div`
+export const FooterMarkContainer = styled.div`
+    display: flex;
+    margin-top: 32px;
 `;
 
-export const FooterMarkContainer = styled.div`
+export const FooterMark = styled.div`
+    margin: auto;
 `;
