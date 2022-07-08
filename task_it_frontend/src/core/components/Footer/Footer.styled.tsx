@@ -29,4 +29,4 @@ export const FooterMarkContainer = styled.div`
 
 export const FooterMark = styled.div`
     margin: auto;
-`;
+`;  
