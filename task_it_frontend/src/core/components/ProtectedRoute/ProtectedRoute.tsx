@@ -26,7 +26,7 @@ const ProtectedRoute: FunctionComponent<ProtectedRouteProps> = ({ children, redi
 
     if(isSuccess) {
         if(data.isAuthenticated) {
-            return <>{children}</>;
+            return <>{children}</>; 
         }
         return <Navigate to={redirectPath} replace />;
     }
