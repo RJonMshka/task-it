@@ -4,6 +4,7 @@ import com.taskit.app.entities.Role;
 import com.taskit.app.entities.User;
 import com.taskit.app.payloads.requests.LoginRequest;
 import com.taskit.app.payloads.requests.RegistrationRequest;
+import com.taskit.app.payloads.responses.AuthenticationResponse;
 import com.taskit.app.payloads.responses.MessageResponse;
 import com.taskit.app.payloads.responses.UserInfoResponse;
 import com.taskit.app.repositories.RoleRepository;
@@ -18,14 +19,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -115,10 +116,27 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-    @PostMapping(path = "/logout", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/logout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You have been signed out!"));
+    }
+
+    @GetMapping("/get_authentication")
+    public ResponseEntity<?> getAuthentication() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        return ResponseEntity.ok().body(
+                new AuthenticationResponse(
+                        Optional.ofNullable(securityContext.getAuthentication())
+                                .map(authentication -> {
+                                    List<GrantedAuthority> authorities = new ArrayList<>();
+                                    authorities.addAll(authentication.getAuthorities());
+                                    return authorities.stream()
+                                            .noneMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ANONYMOUS"));
+                                })
+                                .orElse(false)
+                        )
+        );
     }
 }

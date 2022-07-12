@@ -44,10 +44,8 @@ const Login: FunctionComponent = () => {
             await loginWithCredentials(formData);
             navigate("/");
         } catch (err) {
-            setError("Login Credentials failed");
+            setError("Invalid Login Credentials");
         }
-        
-
     }
 
     return <PageLayout>

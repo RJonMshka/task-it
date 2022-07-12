@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { StyledAHLoader, StyledAHLoaderContainer } from "./HeaderAccountLoader.styled";
+import { StyledAHLoaderContainer } from "./HeaderAccountLoader.styled";
+import { LoaderSpinner } from "./MainLoader.styled";
 
 const HeaderAccountLoader: FunctionComponent = () => {
     return <StyledAHLoaderContainer>
-        <StyledAHLoader />
+        <LoaderSpinner />
     </StyledAHLoaderContainer>;
 }
 

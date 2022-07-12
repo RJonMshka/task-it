@@ -1,13 +1,23 @@
 import { useQuery } from "react-query";
+import { API_USER, AUTH_API_AUTHENTICATION, BASE_URL } from "../../utilities/constants";
 
+interface AuthResponse {
+    isAuthenticated: boolean
+}
+
+const authApi = `${BASE_URL}${AUTH_API_AUTHENTICATION}`;
 
 const fetchAuthentication = () => {
-    return fetch("localhost:8080/api/user")
+    return window.fetch(
+        authApi,
+        {
+            method: "GET"
+        }
+    ).then(response => response.json())
 }
 
-export const useAuthentication = (onSuccess: (successData: object) => void, onError: (successData: object) => void) => {
-    useQuery("authentication", fetchAuthentication, {
-        onSuccess,
-        onError
-    })
-}
+const useAuthentication = () => {
+    return useQuery<AuthResponse, Error>("authentication", fetchAuthentication)
+};
+
+export default useAuthentication;

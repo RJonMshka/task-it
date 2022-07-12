@@ -18,3 +18,10 @@ export const devices = {
     desktop: `(min-width: ${size.desktop})`,
     desktopL: `(min-width: ${size.desktop})`
 };
+
+export const centerAligned = `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;

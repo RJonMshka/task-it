@@ -8,6 +8,7 @@ export const BASE_URL = `${API_PROTOCOL}${HOSTNAME}:${PORT}${API_PATH}`;
 // Auth api paths
 export const AUTH_API_LOGIN = "/auth/login";
 export const AUTH_API_REGISTER = "/auth/register";
+export const AUTH_API_AUTHENTICATION = "/auth/get_authentication";
 export const AUTH_API_LOGOUT = "/auth/logout";
 
 // User paths
