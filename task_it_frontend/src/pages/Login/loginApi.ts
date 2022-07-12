@@ -10,10 +10,12 @@ interface LoginResponse {
     roles: String[]
 }
 
-const loginApiUrl = `${BASE_URL}${AUTH_API_LOGIN}`;
+const loginApiUrl = `/api${AUTH_API_LOGIN}`;
 
 async function handleLoginResponse(response: Response): Promise<LoginResponse> {
     const data = response.json();
+
+    console.log(response.headers);
 
     if(response.ok) {
         return data;

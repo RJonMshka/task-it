@@ -52,5 +52,6 @@
   "devDependencies": {
     "jest-styled-components": "^7.0.8",
     "typescript-plugin-styled-components": "^2.0.0"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

@@ -5,7 +5,7 @@ interface AuthResponse {
     isAuthenticated: boolean
 }
 
-const authApi = `${BASE_URL}${AUTH_API_AUTHENTICATION}`;
+const authApi = `/api${AUTH_API_AUTHENTICATION}`;
 
 const fetchAuthentication = () => {
     return window.fetch(

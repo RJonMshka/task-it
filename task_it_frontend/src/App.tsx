@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router, Routes, Route
 } from "react-router-dom";
 import ProtectedRoute from './core/components/ProtectedRoute/ProtectedRoute';
+import RedirectRoute from './core/components/RedirectRoute/RedirectRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -21,11 +22,21 @@ function App() {
               ["/", "/home"].map((path, index) => 
               <Route path={path} key={index} element={<Home />} />)
             }
-            <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/dashboard" element={<ProtectedRoute redirectPath='/login'>
-              <Dashboard />
-            </ProtectedRoute>} />
+
+            <Route path="/login" element={
+              <RedirectRoute renderComponent={<Login />} redirectPath="/" />
+            } />
+
+            <Route path="/registration" element={
+              <RedirectRoute renderComponent={<Registration />} redirectPath="/" />
+            } />
+
+            <Route path="/dashboard" element={
+              <ProtectedRoute redirectPath='/login'>
+                <Dashboard />
+              </ProtectedRoute>
+            }/>
+            
           </Routes>
         </Router>
       </QueryClientProvider>
