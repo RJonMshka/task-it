@@ -1,9 +1,9 @@
-const API_PROTOCOL = "http://";
-const HOSTNAME = "localhost";
-const PORT = "8080";
-const API_PATH = "/api";
-
-export const BASE_URL = `${API_PROTOCOL}${HOSTNAME}:${PORT}${API_PATH}`;
+export const METHOD_TYPE_GET = "GET";
+export const METHOD_TYPE_POST = "POST";
+export const METHOD_TYPE_PUT = "PUT";
+export const METHOD_TYPE_PATCH = "PATCH";
+export const METHOD_TYPE_DELETE = "DELETE";
+export const API_PATH = "/api";
 
 // Auth api paths
 export const AUTH_API_LOGIN = "/auth/login";

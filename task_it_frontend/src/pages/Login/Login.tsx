@@ -4,7 +4,7 @@ import Button from '../../core/components/Buttons/Button';
 import FormError from '../../core/components/Forms/Errors/FormError';
 import InputField from '../../core/components/InputFields/InputField';
 import PageLayout from '../../core/components/PageLayout/PageLayout';
-import { AUTH_API_LOGIN, BASE_URL } from '../../utilities/constants';
+import { API_PATH, AUTH_API_LOGIN } from '../../utilities/constants';
 import LoginStyled, { FormGroup, FromLabel } from './Login.styled';
 import { loginWithCredentials } from './loginApi';
 import useLoginForm from './useLoginForm';
@@ -51,7 +51,7 @@ const Login: FunctionComponent = () => {
     return <PageLayout>
         <LoginStyled>
             <h1>Login Form</h1>
-            <form method='POST' action={`${BASE_URL}${AUTH_API_LOGIN}`} onSubmit={handleSubmit}>
+            <form method='POST' action={`${API_PATH}${AUTH_API_LOGIN}`} onSubmit={handleSubmit}>
                 <FormGroup>
                     <FromLabel htmlFor="username">USERNAME</FromLabel>
                     <InputField type="text" name="username" id="username" value={username} onChange={ e => changeFields(e, setUsername)} placeholder="Username" />

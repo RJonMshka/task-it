@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
-import { API_USER, AUTH_API_AUTHENTICATION, BASE_URL } from "../../utilities/constants";
+import { API_PATH, AUTH_API_AUTHENTICATION } from "../../utilities/constants";
 
 interface AuthResponse {
     isAuthenticated: boolean
 }
 
-const authApi = `/api${AUTH_API_AUTHENTICATION}`;
+const authApi = `${API_PATH}${AUTH_API_AUTHENTICATION}`;
 
 const fetchAuthentication = () => {
     return window.fetch(

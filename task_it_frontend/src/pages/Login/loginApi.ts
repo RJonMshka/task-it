@@ -1,4 +1,4 @@
-import { AUTH_API_LOGIN, BASE_URL } from "../../utilities/constants";
+import { API_PATH, AUTH_API_LOGIN } from "../../utilities/constants";
 import { LoginRequestData } from "./Login"
 
 interface LoginResponse {
@@ -10,7 +10,7 @@ interface LoginResponse {
     roles: String[]
 }
 
-const loginApiUrl = `/api${AUTH_API_LOGIN}`;
+const loginApiUrl = `${API_PATH}${AUTH_API_LOGIN}`;
 
 async function handleLoginResponse(response: Response): Promise<LoginResponse> {
     const data = response.json();
