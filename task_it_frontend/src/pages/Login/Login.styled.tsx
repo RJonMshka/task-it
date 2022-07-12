@@ -15,7 +15,7 @@ export default styled.div`
 export const FormGroup = styled.div`
     margin: 16px 0;
     width: 100%:
-    button {
+    button, input {
         width: 100%;
     }
 `;

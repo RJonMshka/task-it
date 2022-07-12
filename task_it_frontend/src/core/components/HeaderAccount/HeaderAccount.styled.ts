@@ -1,20 +1,26 @@
 import styled from "styled-components";
 
 export const HeaderAccountContainer = styled.div`
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: white;
+    background: transparent;
     position: relative;
-    right: 50px;
+    right: 100px;
+
+    svg {
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
+    }
 
     a {
-        display: inline-block;
+        display: flex;
+        align-items: center;
         width: 100%;
-        height: 100%;
-        font-size: 40px;
-        color: #000;
-        text-align: center;
+        height: 100%;  
+    }
+
+    span {
+        font-size: 18px;
         font-weight: 500;
+        color: #000;
     }
 `;

@@ -11,11 +11,11 @@ const headerHeight = {
 
 export default styled.header`
     height: ${headerHeight.mobile};
-    background-color:  background: rgb(2,0,36);
     padding: 8px;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,50,103,1) 30%, rgba(29,68,187,1) 76%, rgba(0,156,187,1) 100%);
+    background-image: radial-gradient( circle farthest-corner at 5.6% 54.5%,  rgba(47,71,79,1) 0%, rgba(159,188,198,1) 83.6% );
     display: flex;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     
     @media ${devices.tablet} {
         height: ${headerHeight.tablet};

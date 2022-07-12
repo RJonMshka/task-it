@@ -5,7 +5,6 @@ export const AccountLinksWrapper = styled.div`
         margin-left: 8px;
         font-size: 20px;
         padding: 8px 16px;
-        background: #520b5e;
-        border-radius: 8px;
+        text-decoration: underline;
     }
 `;

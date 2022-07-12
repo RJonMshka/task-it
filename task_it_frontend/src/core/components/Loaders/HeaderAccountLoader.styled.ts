@@ -6,8 +6,8 @@ const spinAnimation = keyframes`
 `;
 
 export const StyledAHLoaderContainer = styled.div`
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: white;
     position: relative;
@@ -15,12 +15,12 @@ export const StyledAHLoaderContainer = styled.div`
 `;
 
 export const StyledAHLoader = styled.div`
-    border: 5px solid #fff;
-    border-top: 5px solid #5c130e;
+    border: 2px solid #fff;
+    border-top: 2px solid #8889d2;
     border-radius: 50%;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    margin: 5px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    margin: 2px;
     animation-name: ${spinAnimation};
     animation-duration: 2s;
     animation-iteration-count: infinite;

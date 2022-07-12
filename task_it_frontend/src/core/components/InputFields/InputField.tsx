@@ -6,7 +6,7 @@ interface InputFieldProps {
     name: string,
     id?: string,
     className?: string | undefined,
-    onChange?: (e: SyntheticEvent) => void,
+    onChange?: (e: React.FormEvent<HTMLInputElement>) => void,
     defaultValue?: string,
     value?: string,
     placeholder?: string | ""

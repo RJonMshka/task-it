@@ -12,7 +12,6 @@ export const StyledHeroContentContainer = styled.div`
 
 export const StyledHeading = styled.h1`
     font-size: 48px;
-    color: #7a5353;
 `;
 
 export const StyledDescription = styled.p`
@@ -21,8 +20,6 @@ export const StyledDescription = styled.p`
 
 export const StyledHeroBannerContainer = styled.div`
     position: relative;
-    background-color: #91d370;
-    background-image: linear-gradient(319deg, #91d370 0%, #bca0ff 37%, #f2cd54 100%);
     margin: -16px;
 `;
 

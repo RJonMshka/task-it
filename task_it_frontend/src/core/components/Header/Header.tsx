@@ -20,8 +20,8 @@ const Header: FunctionComponent<HeaderProps> = ({ navLinks, authRouteDetails }) 
         </NavContainer>
         
         <AccountLinksContainer>
-            <AccountLinks {...authRouteDetails} />
-            {/* <HeaderAccountLoader /> */}
+            {/* <AccountLinks {...authRouteDetails} /> */}
+            <HeaderAccountLoader />
             {/* <HeaderAccount name="Rajat" /> */}
         </AccountLinksContainer>
     </StyledHeader>
